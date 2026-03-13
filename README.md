@@ -2,7 +2,7 @@
   <h1>Go Task API</h1>
   <p>A minimalist, high-performance REST API for task management built strictly with the Go standard library net/http package.</p>
 
-  <img src="https://raw.githubusercontent.com/ESousa97/go-task-api/main/assets/banner.png" alt="Go Task API Banner" width="600px">
+  <img src="./assets/github-go.png" alt="Go Task API github-go" width="600px">
 
   <br>
 
