@@ -113,15 +113,18 @@ This project is licensed under the **MIT License**.
 
 <div align="center">
 
-## Author
+## Autor
 
 **Enoque Sousa**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/enoque-sousa-bb89aa168/)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/ESousa97)
+[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=flat&logo=target&logoColor=white)](https://enoquesousa.vercel.app)
 
-**[⬆ Back to top](#go-task-api)**
+**[⬆ Voltar ao topo](#go-task-api)**
 
-Made with ❤️ by [Enoque Sousa](https://github.com/ESousa97)
+Feito com ❤️ por [Enoque Sousa](https://github.com/ESousa97)
+
+**Status do Projeto:** Ativo — Em constante atualização
 
 </div>
