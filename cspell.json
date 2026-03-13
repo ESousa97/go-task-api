@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "Enoque",
+    "Sousa",
+    "ServeMux",
+    "stateless",
+    "netstat",
+    "findstr",
+    "taskkill",
+    "gopls",
+    "unusedparams",
+    "vercel"
+  ],
+  "ignorePaths": [
+    "go.mod",
+    "go.sum",
+    "cspell.json"
+  ]
+}

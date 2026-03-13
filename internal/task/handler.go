@@ -2,6 +2,7 @@ package task
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 )
 
@@ -17,6 +18,7 @@ func NewHandler(repo Repository) *Handler {
 
 // Routes manual routing for tasks
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Request received: %s %s", r.Method, r.URL.Path)
 	if r.URL.Path != "/tasks" {
 		http.NotFound(w, r)
 		return
@@ -33,7 +35,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (h *Handler) list(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) list(w http.ResponseWriter, _ *http.Request) {
 	tasks := h.repo.List()
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(tasks)
