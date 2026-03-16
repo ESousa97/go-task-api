@@ -128,4 +128,3 @@ Made with ❤️ by [Enoque Sousa](https://github.com/ESousa97)
 **Project Status:** Active — Constantly updated
 
 </div>
-
