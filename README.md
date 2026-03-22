@@ -9,6 +9,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/ESousa97/go-task-api.svg)](https://pkg.go.dev/github.com/ESousa97/go-task-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/ESousa97/go-task-api)](https://github.com/ESousa97/go-task-api)
+[![CI/CD](https://github.com/ESousa97/go-task-api/actions/workflows/ci.yml/badge.svg)](https://github.com/ESousa97/go-task-api/actions/workflows/ci.yml)
 
 </div>
 
@@ -129,8 +130,8 @@ Follow the project's evolution stages:
 - [x] **Phase 2: Real Persistence** — PostgreSQL integration using Pure SQL.
 - [x] **Phase 3: The Brain** — Middleware implementation and `context` usage.
 
-- [ ] **Phase 4: Professional Architecture** — Repository Pattern refinement and Clean Architecture.
-- [ ] **Phase 5: Reliability and Deploy** — Containerization with Docker and Test suite.
+- [x] **Phase 4: Professional Architecture** — Repository Pattern refinement and Clean Architecture.
+- [x] **Phase 5: Reliability and Deploy** — Integration with GitHub Actions (CI Build & Tests). Containerization with Docker.
 
 ## Contributing
 
