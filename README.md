@@ -98,8 +98,9 @@ graph TD
 Follow the project's evolution stages:
 
 - [x] **Phase 1: The Foundation** — Basic CRUD with `net/http` and In-Memory persistence.
-- [ ] **Phase 2: Real Persistence** — PostgreSQL integration using Pure SQL.
+- [x] **Phase 2: Real Persistence** — PostgreSQL integration using Pure SQL.
 - [ ] **Phase 3: The Brain** — Middleware implementation and `context` usage.
+
 - [ ] **Phase 4: Professional Architecture** — Repository Pattern refinement and Clean Architecture.
 - [ ] **Phase 5: Reliability and Deploy** — Containerization with Docker and Test suite.
 

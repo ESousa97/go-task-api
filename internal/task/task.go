@@ -10,6 +10,9 @@ type Task struct {
 
 // Repository defines the contract for task persistence.
 type Repository interface {
-	Create(task Task) Task
-	List() []Task
+	Create(task Task) (Task, error)
+	List() ([]Task, error)
+	GetByID(id int) (Task, error)
+	Update(id int, task Task) (Task, error)
+	Delete(id int) error
 }
