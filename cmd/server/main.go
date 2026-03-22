@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 
+	"go-task-api/internal/middleware"
 	"go-task-api/internal/task"
 	_ "github.com/lib/pq"
 )
@@ -33,8 +34,16 @@ func main() {
 	mux.Handle("/tasks/", http.StripPrefix("", handler))
 	mux.Handle("/tasks", handler)
 
+// Envolver o mux nos middlewares:
+	// A ordem da execução de fora pra dentro será: Recovery -> Logger -> Auth
+	handlerPipeline := middleware.Recovery(
+		middleware.Logger(
+			middleware.Auth(mux),
+		),
+	)
+
 	log.Println("Server starting on :8080...")
-	if err := http.ListenAndServe(":8080", mux); err != nil {
+	if err := http.ListenAndServe(":8080", handlerPipeline); err != nil {
 		log.Fatalf("Server failed: %v", err)
 	}
 }

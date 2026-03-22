@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+
+	"go-task-api/internal/middleware"
 )
 
 // Handler handles HTTP requests for tasks.
@@ -64,7 +66,11 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (h *Handler) list(w http.ResponseWriter, _ *http.Request) {
+func (h *Handler) list(w http.ResponseWriter, r *http.Request) {
+	if userID := r.Context().Value(middleware.UserIDKey); userID != nil {
+		log.Printf("[TaskHandler/List] Fetching tasks for authorized user: %v", userID)
+	}
+
 	tasks, err := h.repo.List()
 	if err != nil {
 		http.Error(w, "Failed to fetch tasks", http.StatusInternalServerError)
