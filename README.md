@@ -9,7 +9,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/ESousa97/go-task-api.svg)](https://pkg.go.dev/github.com/ESousa97/go-task-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/ESousa97/go-task-api)](https://github.com/ESousa97/go-task-api)
-[![CI/CD](https://github.com/ESousa97/go-task-api/actions/workflows/ci.yml/badge.svg)](https://github.com/ESousa97/go-task-api/actions/workflows/ci.yml)
+[![CI/CD](https://github.com/ESousa97/go-task-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ESousa97/go-task-api/actions/workflows/ci.yml)
 
 </div>
 
