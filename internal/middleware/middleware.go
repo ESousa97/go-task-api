@@ -18,9 +18,9 @@ const (
 func Logger(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
-		
+
 		next.ServeHTTP(w, r)
-		
+
 		log.Printf("[Logger] %s %s took %v", r.Method, r.URL.Path, time.Since(start))
 	})
 }
@@ -34,7 +34,7 @@ func Recovery(next http.Handler) http.Handler {
 				http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 			}
 		}()
-		
+
 		next.ServeHTTP(w, r)
 	})
 }
@@ -43,7 +43,7 @@ func Recovery(next http.Handler) http.Handler {
 func Auth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		apiKey := r.Header.Get("X-API-Key")
-		
+
 		if apiKey != "secret-key" {
 			log.Printf("[Auth] Unauthorized access attempt")
 			http.Error(w, "Unauthorized", http.StatusUnauthorized)

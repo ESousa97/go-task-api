@@ -5,10 +5,10 @@ import (
 	"log"
 	"net/http"
 
+	_ "github.com/lib/pq"
 	"go-task-api/internal/handler"
 	"go-task-api/internal/middleware"
 	"go-task-api/internal/repository"
-	_ "github.com/lib/pq"
 )
 
 func main() {
@@ -29,13 +29,13 @@ func main() {
 	taskHandler := handler.NewTaskHandler(repo)
 
 	mux := http.NewServeMux()
-	
+
 	// Manual routing using ServeMux
 	// Use trailing slash to allow Handler to do its own sub-routing (e.g. /tasks/1)
 	mux.Handle("/tasks/", http.StripPrefix("", taskHandler))
 	mux.Handle("/tasks", taskHandler)
 
-// Envolver o mux nos middlewares:
+	// Envolver o mux nos middlewares:
 	// A ordem da execução de fora pra dentro será: Recovery -> Logger -> Auth
 	handlerPipeline := middleware.Recovery(
 		middleware.Logger(
