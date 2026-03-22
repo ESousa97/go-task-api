@@ -5,8 +5,9 @@ import (
 	"log"
 	"net/http"
 
+	"go-task-api/internal/handler"
 	"go-task-api/internal/middleware"
-	"go-task-api/internal/task"
+	"go-task-api/internal/repository"
 	_ "github.com/lib/pq"
 )
 
@@ -24,15 +25,15 @@ func main() {
 
 	log.Println("Database connection established successfully!")
 
-	repo := task.NewPostgresRepository(db)
-	handler := task.NewHandler(repo)
+	repo := repository.NewPostgresRepository(db)
+	taskHandler := handler.NewTaskHandler(repo)
 
 	mux := http.NewServeMux()
 	
 	// Manual routing using ServeMux
 	// Use trailing slash to allow Handler to do its own sub-routing (e.g. /tasks/1)
-	mux.Handle("/tasks/", http.StripPrefix("", handler))
-	mux.Handle("/tasks", handler)
+	mux.Handle("/tasks/", http.StripPrefix("", taskHandler))
+	mux.Handle("/tasks", taskHandler)
 
 // Envolver o mux nos middlewares:
 	// A ordem da execução de fora pra dentro será: Recovery -> Logger -> Auth

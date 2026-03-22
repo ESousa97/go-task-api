@@ -1,4 +1,4 @@
-package task
+package handler
 
 import (
 	"encoding/json"
@@ -7,21 +7,23 @@ import (
 	"strconv"
 	"strings"
 
+	"go-task-api/internal/domain"
 	"go-task-api/internal/middleware"
+	"go-task-api/internal/repository"
 )
 
-// Handler handles HTTP requests for tasks.
-type Handler struct {
-	repo Repository
+// TaskHandler handles HTTP requests for tasks.
+type TaskHandler struct {
+	repo repository.TaskRepository
 }
 
-// NewHandler creates a new task handler.
-func NewHandler(repo Repository) *Handler {
-	return &Handler{repo: repo}
+// NewTaskHandler creates a new task handler.
+func NewTaskHandler(repo repository.TaskRepository) *TaskHandler {
+	return &TaskHandler{repo: repo}
 }
 
-// Routes manual routing for tasks
-func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+// ServeHTTP manual routing for tasks
+func (h *TaskHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Request received: %s %s", r.Method, r.URL.Path)
 
 	path := strings.TrimPrefix(r.URL.Path, "/tasks")
@@ -66,7 +68,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (h *Handler) list(w http.ResponseWriter, r *http.Request) {
+func (h *TaskHandler) list(w http.ResponseWriter, r *http.Request) {
 	if userID := r.Context().Value(middleware.UserIDKey); userID != nil {
 		log.Printf("[TaskHandler/List] Fetching tasks for authorized user: %v", userID)
 	}
@@ -80,8 +82,8 @@ func (h *Handler) list(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(tasks)
 }
 
-func (h *Handler) create(w http.ResponseWriter, r *http.Request) {
-	var t Task
+func (h *TaskHandler) create(w http.ResponseWriter, r *http.Request) {
+	var t domain.Task
 	if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
@@ -97,7 +99,7 @@ func (h *Handler) create(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(created)
 }
 
-func (h *Handler) get(w http.ResponseWriter, r *http.Request, id int) {
+func (h *TaskHandler) get(w http.ResponseWriter, r *http.Request, id int) {
 	task, err := h.repo.GetByID(id)
 	if err != nil {
 		if err.Error() == "task not found" {
@@ -111,8 +113,8 @@ func (h *Handler) get(w http.ResponseWriter, r *http.Request, id int) {
 	json.NewEncoder(w).Encode(task)
 }
 
-func (h *Handler) update(w http.ResponseWriter, r *http.Request, id int) {
-	var t Task
+func (h *TaskHandler) update(w http.ResponseWriter, r *http.Request, id int) {
+	var t domain.Task
 	if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
@@ -131,7 +133,7 @@ func (h *Handler) update(w http.ResponseWriter, r *http.Request, id int) {
 	json.NewEncoder(w).Encode(updated)
 }
 
-func (h *Handler) delete(w http.ResponseWriter, r *http.Request, id int) {
+func (h *TaskHandler) delete(w http.ResponseWriter, r *http.Request, id int) {
 	err := h.repo.Delete(id)
 	if err != nil {
 		if err.Error() == "task not found" {

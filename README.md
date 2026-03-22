@@ -63,16 +63,44 @@ go run cmd/server/main.go
 
 ### Testing the API (curl)
 
-**Create Task:**
+> **Nota:** Todos os endpoints exigem o header `X-API-Key: secret-key` para autenticação.
+
+**Criar uma Tarefa (POST):**
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"title": "Implement API", "description": "Use net/http", "status": "doing"}' http://localhost:8080/tasks
+curl -i -X POST \
+  -H "X-API-Key: secret-key" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Implementar API", "description": "Usar net/http", "status": "doing"}' \
+  http://localhost:8080/tasks
 ```
 
-**List Tasks:**
+**Listar Tarefas (GET):**
 
 ```bash
-curl http://localhost:8080/tasks
+curl -i -H "X-API-Key: secret-key" http://localhost:8080/tasks
+```
+
+**Buscar Tarefa por ID (GET):**
+
+```bash
+curl -i -H "X-API-Key: secret-key" http://localhost:8080/tasks/1
+```
+
+**Atualizar Tarefa (PUT):**
+
+```bash
+curl -i -X PUT \
+  -H "X-API-Key: secret-key" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Atualizar API", "description": "Aplicar Repository Pattern", "status": "done"}' \
+  http://localhost:8080/tasks/1
+```
+
+**Deletar Tarefa (DELETE):**
+
+```bash
+curl -i -X DELETE -H "X-API-Key: secret-key" http://localhost:8080/tasks/1
 ```
 
 ## Architecture

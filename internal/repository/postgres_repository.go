@@ -1,8 +1,10 @@
-package task
+package repository
 
 import (
 	"database/sql"
 	"errors"
+
+	"go-task-api/internal/domain"
 )
 
 type postgresRepository struct {
@@ -10,11 +12,11 @@ type postgresRepository struct {
 }
 
 // NewPostgresRepository creates a new PostgreSQL task repository.
-func NewPostgresRepository(db *sql.DB) Repository {
+func NewPostgresRepository(db *sql.DB) TaskRepository {
 	return &postgresRepository{db: db}
 }
 
-func (r *postgresRepository) Create(t Task) (Task, error) {
+func (r *postgresRepository) Create(t domain.Task) (domain.Task, error) {
 	query := `
 		INSERT INTO tasks (title, description, status) 
 		VALUES ($1, $2, $3) 
@@ -22,12 +24,12 @@ func (r *postgresRepository) Create(t Task) (Task, error) {
 	`
 	err := r.db.QueryRow(query, t.Title, t.Description, t.Status).Scan(&t.ID)
 	if err != nil {
-		return Task{}, err
+		return domain.Task{}, err
 	}
 	return t, nil
 }
 
-func (r *postgresRepository) List() ([]Task, error) {
+func (r *postgresRepository) List() ([]domain.Task, error) {
 	query := `SELECT id, title, description, status FROM tasks`
 	rows, err := r.db.Query(query)
 	if err != nil {
@@ -35,9 +37,9 @@ func (r *postgresRepository) List() ([]Task, error) {
 	}
 	defer rows.Close()
 
-	var tasks []Task
+	var tasks []domain.Task
 	for rows.Next() {
-		var t Task
+		var t domain.Task
 		if err := rows.Scan(&t.ID, &t.Title, &t.Description, &t.Status); err != nil {
 			return nil, err
 		}
@@ -50,32 +52,32 @@ func (r *postgresRepository) List() ([]Task, error) {
 	return tasks, nil
 }
 
-func (r *postgresRepository) GetByID(id int) (Task, error) {
+func (r *postgresRepository) GetByID(id int) (domain.Task, error) {
 	query := `SELECT id, title, description, status FROM tasks WHERE id = $1`
-	var t Task
+	var t domain.Task
 	err := r.db.QueryRow(query, id).Scan(&t.ID, &t.Title, &t.Description, &t.Status)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
-			return Task{}, errors.New("task not found") // simplify mapping later
+			return domain.Task{}, errors.New("task not found") // simplify mapping later
 		}
-		return Task{}, err
+		return domain.Task{}, err
 	}
 	return t, nil
 }
 
-func (r *postgresRepository) Update(id int, t Task) (Task, error) {
+func (r *postgresRepository) Update(id int, t domain.Task) (domain.Task, error) {
 	query := `
 		UPDATE tasks 
 		SET title = $1, description = $2, status = $3 
 		WHERE id = $4 
 		RETURNING id, title, description, status
 	`
-	var updated Task
+	var updated domain.Task
 	err := r.db.QueryRow(query, t.Title, t.Description, t.Status, id).Scan(
 		&updated.ID, &updated.Title, &updated.Description, &updated.Status,
 	)
 	if err != nil {
-		return Task{}, err
+		return domain.Task{}, err
 	}
 	return updated, nil
 }
@@ -86,7 +88,7 @@ func (r *postgresRepository) Delete(id int) error {
 	if err != nil {
 		return err
 	}
-	
+
 	rowsAffected, err := result.RowsAffected()
 	if err != nil {
 		return err

@@ -1,22 +1,26 @@
-package task
+package repository
 
-import "sync"
+import (
+	"sync"
+
+	"go-task-api/internal/domain"
+)
 
 type memoryRepository struct {
 	mu     sync.RWMutex
-	tasks  []Task
+	tasks  []domain.Task
 	nextID int
 }
 
 // NewMemoryRepository creates a new in-memory task repository.
-func NewMemoryRepository() Repository {
+func NewMemoryRepository() TaskRepository {
 	return &memoryRepository{
-		tasks:  []Task{},
+		tasks:  []domain.Task{},
 		nextID: 1,
 	}
 }
 
-func (r *memoryRepository) Create(t Task) (Task, error) {
+func (r *memoryRepository) Create(t domain.Task) (domain.Task, error) {
 	r.mu.Lock()
 	defer r.mu.Unlock()
 
@@ -26,14 +30,14 @@ func (r *memoryRepository) Create(t Task) (Task, error) {
 	return t, nil
 }
 
-func (r *memoryRepository) List() ([]Task, error) {
+func (r *memoryRepository) List() ([]domain.Task, error) {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
 
 	return r.tasks, nil
 }
 
-func (r *memoryRepository) GetByID(id int) (Task, error) {
+func (r *memoryRepository) GetByID(id int) (domain.Task, error) {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
 	for _, t := range r.tasks {
@@ -41,10 +45,10 @@ func (r *memoryRepository) GetByID(id int) (Task, error) {
 			return t, nil
 		}
 	}
-	return Task{}, nil // Simulando 'not found' vazio (melhor seria um erro map)
+	return domain.Task{}, nil // Simulando 'not found' vazio (melhor seria um erro map)
 }
 
-func (r *memoryRepository) Update(id int, task Task) (Task, error) {
+func (r *memoryRepository) Update(id int, task domain.Task) (domain.Task, error) {
 	r.mu.Lock()
 	defer r.mu.Unlock()
 	for i, t := range r.tasks {
@@ -54,7 +58,7 @@ func (r *memoryRepository) Update(id int, task Task) (Task, error) {
 			return task, nil
 		}
 	}
-	return Task{}, nil
+	return domain.Task{}, nil
 }
 
 func (r *memoryRepository) Delete(id int) error {
