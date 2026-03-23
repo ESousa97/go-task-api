@@ -3,7 +3,7 @@ package repository
 import (
 	"sync"
 
-	"go-task-api/internal/domain"
+	"github.com/ESousa97/go-task-api/internal/domain"
 )
 
 type memoryRepository struct {

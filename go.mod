@@ -1,4 +1,4 @@
-module go-task-api
+module github.com/ESousa97/go-task-api
 
 go 1.25.0
 

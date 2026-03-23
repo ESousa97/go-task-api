@@ -1,7 +1,7 @@
 // Package repository provides abstractions and implementations for data persistence.
 package repository
 
-import "go-task-api/internal/domain"
+import "github.com/ESousa97/go-task-api/internal/domain"
 
 // TaskRepository defines the interface for task data access and persistence operations.
 // It follows the Dependency Inversion principle, allowing the handlers to remain

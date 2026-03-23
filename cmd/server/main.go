@@ -6,9 +6,9 @@ import (
 	"net/http"
 
 	_ "github.com/lib/pq"
-	"go-task-api/internal/handler"
-	"go-task-api/internal/middleware"
-	"go-task-api/internal/repository"
+	"github.com/ESousa97/go-task-api/internal/handler"
+	"github.com/ESousa97/go-task-api/internal/middleware"
+	"github.com/ESousa97/go-task-api/internal/repository"
 )
 
 func main() {
