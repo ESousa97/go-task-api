@@ -1,3 +1,4 @@
+// Package handler provides the HTTP entry points and routing for the application.
 package handler
 
 import (
@@ -12,12 +13,14 @@ import (
 	"go-task-api/internal/repository"
 )
 
-// TaskHandler handles HTTP requests for tasks.
+// TaskHandler implements the http.Handler interface to process task-related HTTP requests.
+// It uses a [repository.TaskRepository] to perform data operations.
 type TaskHandler struct {
 	repo repository.TaskRepository
 }
 
-// NewTaskHandler creates a new task handler.
+// NewTaskHandler initializes and returns a new pointer to [TaskHandler].
+// It expects a valid [repository.TaskRepository] implementation.
 func NewTaskHandler(repo repository.TaskRepository) *TaskHandler {
 	return &TaskHandler{repo: repo}
 }
