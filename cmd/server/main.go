@@ -5,10 +5,10 @@ import (
 	"log"
 	"net/http"
 
-	_ "github.com/lib/pq"
 	"github.com/ESousa97/go-task-api/internal/handler"
 	"github.com/ESousa97/go-task-api/internal/middleware"
 	"github.com/ESousa97/go-task-api/internal/repository"
+	_ "github.com/lib/pq"
 )
 
 func main() {
