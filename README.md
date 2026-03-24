@@ -17,7 +17,18 @@
 
 ---
 
-**Go Task API** is a high-performance RESTful service designed to manage task lifecycles with zero external framework dependencies. It implements architectural patterns like **Repository** and **Dependency Injection** to ensure modularity, testability, and a low blast radius (Failure domain isolation) in multi-provider environments (Memory and PostgreSQL).
+**Go Task API** is my third project developed in **Go**, created with the goal of consolidating knowledge in the language and exploring its fundamental patterns. This repository serves as study material and personal reference, focusing on an implementation strictly based on the standard library (`net/http`).
+
+The project implements architectural patterns such as **Repository** and **Dependency Injection**, ensuring modularity and testability in environments with multiple providers (Memory and PostgreSQL).
+
+## What this project teaches
+
+This project was built to absorb essential engineering concepts with Go:
+- **Standard Library:** Using `net/http` without external frameworks (Gin, Echo).
+- **Dependency Injection:** Decoupling layers through interfaces.
+- **Dual Persistence:** Implementation of repositories in both memory and PostgreSQL.
+- **Middlewares:** Creation of security (Auth) and resilience (Recovery) layers.
+- **DevOps & CI/CD:** Orchestration with Docker and automation with GitHub Actions.
 
 ## Project Showcase
 
@@ -58,8 +69,8 @@ curl -i -H "X-API-Key: secret-key" http://localhost:8080/tasks
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ESousa97/go-task-api.git
-cd go-task-api
+git clone https://github.com/ESousa97/apigotask.git
+cd apigotask
 
 # 2. Start the database
 docker-compose up -d
@@ -72,7 +83,7 @@ make run
 
 | Target | Description |
 | --- | --- |
-| `make build` | Compiles the project into `bin/go-task-api` |
+| `make build` | Compiles the project into `bin/apigotask` |
 | `make run` | Builds and executes the server |
 | `make test` | Runs all unit and integration tests |
 | `make clean` | Removes build artifacts and binaries |
@@ -116,26 +127,25 @@ graph TD
 
 ## Roadmap
 
-Acompanhe as etapas de evolução do projeto:
+Track the project's evolution stages:
 
 - [x] **Phase 1: Foundation** — In-Memory persistence core.
 - [x] **Phase 2: Persistence** — PostgreSQL integration with Docker.
 - [x] **Phase 3: Security** — Middleware implementation (Auth & Recovery).
 - [x] **Phase 4: Patterns** — Repository Pattern & Dependency Injection.
 - [x] **Phase 5: Governance** — CI/CD, Professional Documentation and Badges.
-- [ ] **Phase 6: Observability** — Structured logging and health checks.
 
 ## Contributing
 
-Interessado em colaborar? Veja nosso [CONTRIBUTING.md](CONTRIBUTING.md) para padrões de código e processo de PR.
+Interested in collaborating? Check our [CONTRIBUTING.md](CONTRIBUTING.md) for code standards and PR process.
 
 ## License
 
-Este projeto está licenciado sob a **MIT License** — veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 <div align="center">
 
-## Autor
+## Author
 
 **Enoque Sousa**
 
@@ -143,10 +153,10 @@ Este projeto está licenciado sob a **MIT License** — veja o arquivo [LICENSE]
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/ESousa97)
 [![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=flat&logo=target&logoColor=white)](https://enoquesousa.vercel.app)
 
-**[⬆ Voltar ao topo](#go-task-api)**
+**[⬆ Back to top](#apigotask)**
 
-Feito com ❤️ por [Enoque Sousa](https://github.com/ESousa97)
+Made with ❤️ by [Enoque Sousa](https://github.com/ESousa97)
 
-**Status do Projeto:** Ativo — Em constante atualização
+**Project Status:** Archived — Study Project
 
 </div>
