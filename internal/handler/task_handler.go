@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ESousa97/go-task-api/internal/domain"
-	"github.com/ESousa97/go-task-api/internal/middleware"
-	"github.com/ESousa97/go-task-api/internal/repository"
+	"github.com/ESousa97/apigotask/internal/domain"
+	"github.com/ESousa97/apigotask/internal/middleware"
+	"github.com/ESousa97/apigotask/internal/repository"
 )
 
 // TaskHandler implements the http.Handler interface to process task-related HTTP requests.

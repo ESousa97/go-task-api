@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/ESousa97/go-task-api/internal/domain"
+	"github.com/ESousa97/apigotask/internal/domain"
 )
 
 type postgresRepository struct {

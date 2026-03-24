@@ -1,5 +1,5 @@
 # Binary name
-BINARY_NAME=go-task-api
+BINARY_NAME=apigotask
 
 # Build targets
 .PHONY: all build run test clean help

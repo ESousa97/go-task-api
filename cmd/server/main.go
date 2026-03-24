@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/ESousa97/go-task-api/internal/handler"
-	"github.com/ESousa97/go-task-api/internal/middleware"
-	"github.com/ESousa97/go-task-api/internal/repository"
+	"github.com/ESousa97/apigotask/internal/handler"
+	"github.com/ESousa97/apigotask/internal/middleware"
+	"github.com/ESousa97/apigotask/internal/repository"
 	_ "github.com/lib/pq"
 )
 

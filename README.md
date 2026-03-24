@@ -1,17 +1,17 @@
 <div align="center">
-  <h1>Go Task API</h1>
+  <h1>apigotask</h1>
   <p>Minimalist and high-performance task management API built strictly with the Go standard library.</p>
 
   <img src="assets/github-go.png" alt="Go Task API Banner" width="600px">
 
   <br>
 
-[![CI/CD](https://github.com/ESousa97/go-task-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ESousa97/go-task-api/actions/workflows/ci.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/ESousa97/go-task-api)](https://goreportcard.com/report/github.com/ESousa97/go-task-api)
-[![Go Reference](https://pkg.go.dev/badge/github.com/ESousa97/go-task-api.svg)](https://pkg.go.dev/github.com/ESousa97/go-task-api)
-[![License: MIT](https://img.shields.io/github/license/ESousa97/go-task-api)](https://opensource.org/licenses/MIT)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/ESousa97/go-task-api)](https://github.com/ESousa97/go-task-api)
-[![Last Commit](https://img.shields.io/github/last-commit/ESousa97/go-task-api)](https://github.com/ESousa97/go-task-api/commits/main)
+[![CI/CD](https://github.com/ESousa97/apigotask/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ESousa97/apigotask/actions/workflows/ci.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ESousa97/apigotask)](https://goreportcard.com/report/github.com/ESousa97/apigotask)
+[![Go Reference](https://pkg.go.dev/badge/github.com/ESousa97/apigotask.svg)](https://pkg.go.dev/github.com/ESousa97/apigotask)
+[![License: MIT](https://img.shields.io/github/license/ESousa97/apigotask)](https://opensource.org/licenses/MIT)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/ESousa97/apigotask)](https://github.com/ESousa97/apigotask)
+[![Last Commit](https://img.shields.io/github/last-commit/ESousa97/apigotask)](https://github.com/ESousa97/apigotask/commits/main)
 
 </div>
 
@@ -105,7 +105,7 @@ graph TD
 | `PUT` | `/tasks/{id}` | Update an existing task | Yes |
 | `DELETE` | `/tasks/{id}` | Remove a task | Yes |
 
-> View full documentation at [pkg.go.dev/github.com/ESousa97/go-task-api](https://pkg.go.dev/github.com/ESousa97/go-task-api).
+> View full documentation at [pkg.go.dev/github.com/ESousa97/apigotask](https://pkg.go.dev/github.com/ESousa97/apigotask).
 
 ## Configuration
 

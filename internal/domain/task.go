@@ -1,4 +1,4 @@
-// Package domain holds the core business entities and models for the go-task-api.
+// Package domain holds the core business entities and models for the apigotask.
 package domain
 
 // Task represents a core business entity for a task in the system.
